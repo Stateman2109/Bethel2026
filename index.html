@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETHEL'26 Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>BETHEL'26</h1>
+      <p>LOADING LOVE STORY...</p>
+    </div>
+
+    <header>
+      <div class="logo">BETHEL'26</div>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="church.html">Church</a></li>
+          <li><a href="engagement.html">Engagement</a></li>
+          <li><a href="reception.html">Reception</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="personnel.html">Personnel</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <!-- Replace video.mp4 with the couple prewedding video -->
+      <video autoplay muted loop playsinline>
+        <source src="img/corp2.mp4" type="video/mp4" />
+      </video>
+      <div class="wedding-logo">
+        <img src="img/logo.jpg" alt="logo" srcset="" class="w-portrait" />
+      </div>
+      <div class="romantic-effects" id="romantic-effects"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h2>Together Forever</h2>
+        <h1>Kehinde & Adeolu</h1>
+        <p>Join us as we celebrate love, unity and God's faithfulness.</p>
+        <a href="#rsvp" class="btn">RSVP NOW</a>
+      </div>
+    </section>
+    <section id="welcome" style="background: #fff">
+      <div class="section-title">
+        <h2>Welcome Message</h2>
+        <p>A special message from the couple</p>
+      </div>
+
+      <div
+        class="card welcome-card"
+        style="
+          max-width: 900px;
+          margin: auto;
+          text-align: center;
+          padding: 20px;
+        "
+      >
+        <h3
+          style="
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+          "
+        >
+          Dear Family & Friends
+        </h3>
+
+        <p style="font-size: 17px; line-height: 2; text-align: center; margin-bottom: 15px;">
+          Welcome to Bethel 2026—a sacred celebration of love, faith, and divine covenant.
+        </p>
+        
+        <!-- FIXED: Changed text-align from justify to center/left combination via CSS below, and fixed typo -->
+        <p class="welcome-text" style="font-size: 17px; line-height: 2; text-align: center;">
+          As you join us on this special occasion, we warmly welcome you to
+          witness the union between <b>Adeolu Johnson</b> and
+          <b>Omokehinde Esther</b> taking place on October 31st, 2026 at St.
+          Matthias Anglican Church, where two hearts come together before God to
+          begin a lifelong journey of love, purpose, and commitment.
+          <br /><br />
+          The theme of this wedding, <b>“Bethel”</b>, meaning “House of God” or
+          “The Dwelling Place of God,” reflects the spiritual foundation upon
+          which this union is built. Our desire is to establish a home centered on
+          Christ, a home filled with love, prayer, peace, faithfulness, and the
+          presence of God.
+          <br /><br />
+          We believe that marriage is a divine institution ordained by God, and
+          this gathering marks the beginning of a Godly legacy rooted in
+          biblical values and unconditional love. As family, friends, and loved
+          ones, your presence, prayers, and support mean so much to us as we
+          dedicate this new chapter to God’s glory.
+          <br /><br />
+          May this celebration inspire hearts, strengthen faith, and remind us
+          all that a home built on God can stand through every season of life.
+          <br /><br />
+          Thank you for being part of <b>Bethel 2026</b>. May the Lord bless you
+          richly as you celebrate with us. <br /><br />
+          <b>Adeolu & Kehinde</b>
+        </p>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="section-title">
+        <h2>Countdown To Forever</h2>
+        <p>The big day is getting closer</p>
+      </div>
+
+      <div class="countdown">
+        <div class="count-box">
+          <h3 id="days">00</h3>
+          <span>DAYS</span>
+        </div>
+
+        <div class="count-box">
+          <h3 id="hours">00</h3>
+          <span>HOURS</span>
+        </div>
+
+        <div class="count-box">
+          <h3 id="minutes">00</h3>
+          <span>MINUTES</span>
+        </div>
+
+        <div class="count-box">
+          <h3 id="seconds">00</h3>
+          <span>SECONDS</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="rsvp">
+        <div class="section-title">
+          <h2 style="color: white">RSVP</h2>
+          <p style="color: #ddd">We would love to celebrate with you</p>
+        </div>
+
+        <form>
+          <input type="text" placeholder="Full Name" />
+          <input type="email" placeholder="Email Address" />
+
+          <select>
+            <option>Will you attend?</option>
+            <option>Yes, I will attend</option>
+            <option>Sorry, I can't attend</option>
+          </select>
+
+          <textarea
+            rows="5"
+            placeholder="Leave a message for the couple"
+          ></textarea>
+
+          <button type="submit">Submit RSVP</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <h3>BETHEL'26</h3>
+      <p>Thank you for celebrating with us.</p>
+      <br />
+      <p style="font-family: 'Times New Roman', Times, serif; font-style: italic;">Designed with love by Statemantech &copy;2026</p>
+    </footer>
+
+    <div class="music-btn" id="musicBtn">♫</div>
+
+    <!-- Replace music.mp3 with romantic love song or instrumental -->
+    <audio id="bgMusic" autoplay loop>
+      <source src="music/song.mp3" type="audio/mpeg" />
+    </audio>
+  </body>
+</html>
