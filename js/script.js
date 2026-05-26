@@ -85,6 +85,7 @@
 //     }, 18000);
 //   }
 
+
 // --- 1. LOADER SECTION ---
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -191,3 +192,44 @@ if (romanticContainer) {
 
   setInterval(createEffect, 800);
 }
+
+
+// form rsvp
+document.getElementById('rsvpForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const attendance = document.getElementById('attendance').value;
+  const receiver = document.getElementById('receiver').value;
+  const message = document.getElementById('message').value;
+
+  const groomPhone = "2348107232879"; // change
+  const bridePhone = "2347037368995"; // change
+
+  let phone = "";
+
+  if(receiver === "groom"){
+    phone = groomPhone;
+  } else if(receiver === "bride"){
+    phone = bridePhone;
+  } else {
+    alert("Please choose who to send RSVP to");
+    return;
+  }
+
+  const text = `💍 Wedding RSVP 💍
+
+Name: ${name}
+Email: ${email}
+Attendance: ${attendance}
+
+Message:
+${message}`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank");
+  alert("RSVP ready on WhatsApp. Please click send!");
+  this.reset();
+});

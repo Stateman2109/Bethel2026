@@ -151,23 +151,30 @@
           <p style="color: #ddd">We would love to celebrate with you</p>
         </div>
 
-        <form>
-          <input type="text" placeholder="Full Name" />
-          <input type="email" placeholder="Email Address" />
+        <form id="rsvpForm">
+  <input type="text" id="name" placeholder="Full Name" />
+  <input type="email" id="email" placeholder="Email Address" />
 
-          <select>
-            <option>Will you attend?</option>
-            <option>Yes, I will attend</option>
-            <option>Sorry, I can't attend</option>
-          </select>
+  <select id="attendance">
+    <option value="">Will you attend?</option>
+    <option value="Yes">Yes, I will attend</option>
+    <option value="No">Sorry, I can't attend</option>
+  </select>
 
-          <textarea
-            rows="5"
-            placeholder="Leave a message for the couple"
-          ></textarea>
+  <!-- ✅ NEW FIELD (this is all you’re adding) -->
+  <select id="receiver">
+    <option value="">Who do you want to notify?</option>
+    <option value="groom">Groom 🤵</option>
+    <option value="bride">Bride 👰</option>
+  </select>
 
-          <button type="submit">Submit RSVP</button>
-        </form>
+  <textarea id="message"
+    rows="5"
+    placeholder="Leave a message for the couple">
+  </textarea>
+
+  <button type="submit">Send RSVP via WhatsApp</button>
+</form>
       </div>
     </section>
 
