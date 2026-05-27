@@ -4,54 +4,71 @@ const sbKey = "sb_publishable_KHM867kk7rujpqEsRkgX1Q_Kg0WJLYh";
 
 const weddingSupabase = window.supabase.createClient(sbUrl, sbKey);
 
-// ✅ Your RSVP logic
-document.getElementById('rsvpForm').addEventListener('submit', async function(e){
-  e.preventDefault();
+//     document.getElementById("days").innerHTML = days;
+//     document.getElementById("hours").innerHTML = hours;
+//     document.getElementById("minutes").innerHTML = minutes;
+//     document.getElementById("seconds").innerHTML = seconds;
+//   }, 1000);
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const attendance = document.getElementById('attendance').value;
-  const receiver = document.getElementById('receiver').value;
-  const message = document.getElementById('message').value;
+//   const music = document.getElementById("bgMusic");
+//   const musicBtn = document.getElementById("musicBtn");
 
-  // ✅ SAVE TO SUPABASE USING THE UNIQUE VARIABLE
-  const { data, error } = await weddingSupabase
-    .from('rsvp_responses') 
-    .insert([
-      {
-        name,
-        email,
-        attendance,
-        message,
-        receiver
-      }
-    ]);
+//   musicBtn.addEventListener("click", () => {
+//     if (music.paused) {
+//       music.play();
+//       musicBtn.innerHTML = "❚❚";
+//     } else {
+//       music.pause();
+//       musicBtn.innerHTML = "♫";
+//     }
+//   });
+//   const menuToggle = document.getElementById("menu-toggle");
+//   const nav = document.querySelector("nav");
 
-  if(error){
-    alert("Error saving RSVP to database.");
-    console.error(error);
-    return;
-  }
+//   menuToggle.addEventListener("click", () => {
+//     nav.classList.toggle("active");
 
-  // ✅ SEND TO WHATSAPP
-    // ✅ SEND TO WHATSAPP
-    // ✅ SEND TO WHATSAPP (Foolproof alternative version)
-    // ✅ SEND TO WHATSAPP 
-  const groomPhone = "2348107232879";
-  const bridePhone = "2349069949788";
+//     if (nav.classList.contains("active")) {
+//       menuToggle.innerHTML = "✕";
+//     } else {
+//       menuToggle.innerHTML = "☰";
+//     }
+//   });
+//   //   particles sections for script
+//   const romanticContainer = document.getElementById("romantic-effects");
 
-  let phone = receiver === "groom" ? groomPhone : bridePhone;
+//   function createEffect() {
+//     const effect = document.createElement("span");
 
-  const text = "Wedding RSVP\nName: " + name + "\nAttendance: " + attendance + "\nMessage: " + message;
+//     const items = ["❤", "💍", "✦"];
 
-  // ⚡ CRITICAL FIX: Look closely at the "/" right after wa.me!
-  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
-  
-  window.open(url, "_blank");
+//     effect.innerHTML = items[Math.floor(Math.random() * items.length)];
 
-  this.reset();
-  alert("RSVP saved successfully!");
-});
+//     effect.classList.add("effect");
+
+//     effect.style.left = Math.random() * 100 + "vw";
+
+//     effect.style.fontSize = Math.random() * 25 + 15 + "px";
+
+//     effect.style.animationDuration = Math.random() * 10 + 8 + "s";
+
+//     const colors = [
+//       "rgba(200,169,107,0.45)", // Gold
+//       "rgba(66,92,66,0.35)", // Emerald Green
+//       "rgba(120,140,100,0.30)", // Olive Green
+//       "rgba(255,248,230,0.28)",
+//       "red", // Cream
+//       "green", // Dusty Rose
+//     ];
+
+//     effect.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+//     romanticContainer.appendChild(effect);
+
+//     setTimeout(() => {
+//       effect.remove();
+//     }, 18000);
+//   }
 
 
 // --- 1. LOADER SECTION ---
@@ -161,30 +178,29 @@ if (romanticContainer) {
   setInterval(createEffect, 800);
 }
 
-
 // form rsvp
-// document.getElementById('rsvpForm').addEventListener('submit', function(e){
-//   e.preventDefault();
+document.getElementById('rsvpForm').addEventListener('submit', function(e){
+  e.preventDefault();
 
-//   const name = document.getElementById('name').value;
-//   const email = document.getElementById('email').value;
-//   const attendance = document.getElementById('attendance').value;
-//   const receiver = document.getElementById('receiver').value;
-//   const message = document.getElementById('message').value;
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const attendance = document.getElementById('attendance').value;
+  const receiver = document.getElementById('receiver').value;
+  const message = document.getElementById('message').value;
 
-//   const groomPhone = "2348107232879"; // change
-//   const bridePhone = "2347037368995"; // change
+  const groomPhone = "2348107232879"; // change
+  const bridePhone = "2347037368995"; // change
 
 //   let phone = "";
 
-//   if(receiver === "groom"){
-//     phone = groomPhone;
-//   } else if(receiver === "bride"){
-//     phone = bridePhone;
-//   } else {
-//     alert("Please choose who to send RSVP to");
-//     return;
-//   }
+  if(receiver === "groom"){
+    phone = groomPhone;
+  } else if(receiver === "bride"){
+    phone = bridePhone;
+  } else {
+    alert("Please choose who to send RSVP to");
+    return;
+  }
 
 //   const text = `💍 Wedding RSVP 💍
 
@@ -197,7 +213,7 @@ if (romanticContainer) {
 
 //   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
-//   window.open(url, "_blank");
-//   alert("RSVP ready on WhatsApp. Please click send!");
-//   this.reset();
-// });
+  window.open(url, "_blank");
+  alert("RSVP ready on WhatsApp. Please click send!");
+  this.reset();
+});

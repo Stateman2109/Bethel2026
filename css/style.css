@@ -460,3 +460,9 @@ footer h3 {
   }
 }
 
+.Committee {
+  font-family: 'Times New Roman', Times, serif;
+  list-style-type: none;
+  text-align: left;
+  font-size: small;
+}
