@@ -1,89 +1,57 @@
-//   window.addEventListener("load", () => {
-//     document.getElementById("loader").style.opacity = "0";
+// ⚡ Using a unique variable name to completely bypass the duplicate error
+const sbUrl = "https://bvslvksckxmyirklxmre.supabase.co";
+const sbKey = "sb_publishable_KHM867kk7rujpqEsRkgX1Q_Kg0WJLYh";
 
-//     setTimeout(() => {
-//       document.getElementById("loader").style.display = "none";
-//     }, 1000);
-//   });
+const weddingSupabase = window.supabase.createClient(sbUrl, sbKey);
 
-//   const targetDate = new Date("December 20, 2026 10:00:00").getTime();
+// ✅ Your RSVP logic
+document.getElementById('rsvpForm').addEventListener('submit', async function(e){
+  e.preventDefault();
 
-//   setInterval(() => {
-//     const now = new Date().getTime();
-//     const distance = targetDate - now;
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const attendance = document.getElementById('attendance').value;
+  const receiver = document.getElementById('receiver').value;
+  const message = document.getElementById('message').value;
 
-//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//     const hours = Math.floor(
-//       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-//     );
-//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // ✅ SAVE TO SUPABASE USING THE UNIQUE VARIABLE
+  const { data, error } = await weddingSupabase
+    .from('rsvp_responses') 
+    .insert([
+      {
+        name,
+        email,
+        attendance,
+        message,
+        receiver
+      }
+    ]);
 
-//     document.getElementById("days").innerHTML = days;
-//     document.getElementById("hours").innerHTML = hours;
-//     document.getElementById("minutes").innerHTML = minutes;
-//     document.getElementById("seconds").innerHTML = seconds;
-//   }, 1000);
+  if(error){
+    alert("Error saving RSVP to database.");
+    console.error(error);
+    return;
+  }
 
-//   const music = document.getElementById("bgMusic");
-//   const musicBtn = document.getElementById("musicBtn");
+  // ✅ SEND TO WHATSAPP
+    // ✅ SEND TO WHATSAPP
+    // ✅ SEND TO WHATSAPP (Foolproof alternative version)
+    // ✅ SEND TO WHATSAPP 
+  const groomPhone = "2348107232879";
+  const bridePhone = "2347037368995";
 
-//   musicBtn.addEventListener("click", () => {
-//     if (music.paused) {
-//       music.play();
-//       musicBtn.innerHTML = "❚❚";
-//     } else {
-//       music.pause();
-//       musicBtn.innerHTML = "♫";
-//     }
-//   });
-//   const menuToggle = document.getElementById("menu-toggle");
-//   const nav = document.querySelector("nav");
+  let phone = receiver === "groom" ? groomPhone : bridePhone;
 
-//   menuToggle.addEventListener("click", () => {
-//     nav.classList.toggle("active");
+  const text = "Wedding RSVP\nName: " + name + "\nAttendance: " + attendance + "\nMessage: " + message;
 
-//     if (nav.classList.contains("active")) {
-//       menuToggle.innerHTML = "✕";
-//     } else {
-//       menuToggle.innerHTML = "☰";
-//     }
-//   });
-//   //   particles sections for script
-//   const romanticContainer = document.getElementById("romantic-effects");
+  // ⚡ CRITICAL FIX: Look closely at the "/" right after wa.me!
+  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+  
+  window.open(url, "_blank");
 
-//   function createEffect() {
-//     const effect = document.createElement("span");
-
-//     const items = ["❤", "💍", "✦"];
-
-//     effect.innerHTML = items[Math.floor(Math.random() * items.length)];
-
-//     effect.classList.add("effect");
-
-//     effect.style.left = Math.random() * 100 + "vw";
-
-//     effect.style.fontSize = Math.random() * 25 + 15 + "px";
-
-//     effect.style.animationDuration = Math.random() * 10 + 8 + "s";
-
-//     const colors = [
-//       "rgba(200,169,107,0.45)", // Gold
-//       "rgba(66,92,66,0.35)", // Emerald Green
-//       "rgba(120,140,100,0.30)", // Olive Green
-//       "rgba(255,248,230,0.28)",
-//       "red", // Cream
-//       "green", // Dusty Rose
-//     ];
-
-//     effect.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-//     romanticContainer.appendChild(effect);
-
-//     setTimeout(() => {
-//       effect.remove();
-//     }, 18000);
-//   }
+  this.reset();
+  alert("RSVP saved successfully!");
+});
 
 
 // --- 1. LOADER SECTION ---
@@ -195,41 +163,41 @@ if (romanticContainer) {
 
 
 // form rsvp
-document.getElementById('rsvpForm').addEventListener('submit', function(e){
-  e.preventDefault();
+// document.getElementById('rsvpForm').addEventListener('submit', function(e){
+//   e.preventDefault();
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const attendance = document.getElementById('attendance').value;
-  const receiver = document.getElementById('receiver').value;
-  const message = document.getElementById('message').value;
+//   const name = document.getElementById('name').value;
+//   const email = document.getElementById('email').value;
+//   const attendance = document.getElementById('attendance').value;
+//   const receiver = document.getElementById('receiver').value;
+//   const message = document.getElementById('message').value;
 
-  const groomPhone = "2348107232879"; // change
-  const bridePhone = "2347037368995"; // change
+//   const groomPhone = "2348107232879"; // change
+//   const bridePhone = "2347037368995"; // change
 
-  let phone = "";
+//   let phone = "";
 
-  if(receiver === "groom"){
-    phone = groomPhone;
-  } else if(receiver === "bride"){
-    phone = bridePhone;
-  } else {
-    alert("Please choose who to send RSVP to");
-    return;
-  }
+//   if(receiver === "groom"){
+//     phone = groomPhone;
+//   } else if(receiver === "bride"){
+//     phone = bridePhone;
+//   } else {
+//     alert("Please choose who to send RSVP to");
+//     return;
+//   }
 
-  const text = `💍 Wedding RSVP 💍
+//   const text = `💍 Wedding RSVP 💍
 
-Name: ${name}
-Email: ${email}
-Attendance: ${attendance}
+// Name: ${name}
+// Email: ${email}
+// Attendance: ${attendance}
 
-Message:
-${message}`;
+// Message:
+// ${message}`;
 
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+//   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
-  window.open(url, "_blank");
-  alert("RSVP ready on WhatsApp. Please click send!");
-  this.reset();
-});
+//   window.open(url, "_blank");
+//   alert("RSVP ready on WhatsApp. Please click send!");
+//   this.reset();
+// });
