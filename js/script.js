@@ -38,7 +38,7 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
     // ✅ SEND TO WHATSAPP (Foolproof alternative version)
     // ✅ SEND TO WHATSAPP 
   const groomPhone = "2348107232879";
-  const bridePhone = "2347037368995";
+  const bridePhone = "2349069949788";
 
   let phone = receiver === "groom" ? groomPhone : bridePhone;
 
