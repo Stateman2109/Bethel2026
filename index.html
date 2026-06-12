@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
     <script src="js/script.js" defer></script>
-    
   </head>
   <body>
     <div class="loader" id="loader">
@@ -73,7 +72,7 @@
       >
         <h3
           style="
-            font-family: 'Great Vibes', cursive;
+            font-family: &quot;Great Vibes&quot;, cursive;
             font-size: 3rem;
             color: var(--gold);
             margin-bottom: 20px;
@@ -82,12 +81,23 @@
           Dear Family & Friends
         </h3>
 
-        <p style="font-size: 17px; line-height: 2; text-align: center; margin-bottom: 15px;">
-          Welcome to Bethel 2026—a sacred celebration of love, faith, and divine covenant.
+        <p
+          style="
+            font-size: 17px;
+            line-height: 2;
+            text-align: center;
+            margin-bottom: 15px;
+          "
+        >
+          Welcome to Bethel 2026—a sacred celebration of love, faith, and divine
+          covenant.
         </p>
-        
+
         <!-- FIXED: Changed text-align from justify to center/left combination via CSS below, and fixed typo -->
-        <p class="welcome-text" style="font-size: 17px; line-height: 2; text-align: center;">
+        <p
+          class="welcome-text"
+          style="font-size: 17px; line-height: 2; text-align: center"
+        >
           As you join us on this special occasion, we warmly welcome you to
           witness the union between <b>Adeolu Johnson</b> and
           <b>Omokehinde Esther</b> taking place on October 31st, 2026 at St.
@@ -96,10 +106,9 @@
           <br /><br />
           The theme of this wedding, <b>“Bethel”</b>, meaning “House of God” or
           “The Dwelling Place of God,” reflects the spiritual foundation upon
-          which this union is built. Our desire is to establish a home centered on
-          Christ, a home filled with love, prayer, peace, faithfulness, and the
-          presence of God.
-          <br /><br />
+          which this union is built. Our desire is to establish a home centered
+          on Christ, a home filled with love, prayer, peace, faithfulness, and
+          the presence of God. <br /><br />
           We believe that marriage is a divine institution ordained by God, and
           this gathering marks the beginning of a Godly legacy rooted in
           biblical values and unconditional love. As family, friends, and loved
@@ -115,7 +124,6 @@
         </p>
       </div>
     </section>
-
 
     <section>
       <div class="section-title">
@@ -154,29 +162,32 @@
         </div>
 
         <form id="rsvpForm">
-  <input type="text" id="name" placeholder="Full Name" />
-  <input type="email" id="email" placeholder="Email Address" />
+          <input type="text" id="name" placeholder="Full Name" />
+          <input type="email" id="email" placeholder="Email Address" />
+          <input type="text" id="number" placeholder="Phone Number" />
 
-  <select id="attendance">
-    <option value="">Will you attend?</option>
-    <option value="Yes">Yes, I will attend</option>
-    <option value="No">Sorry, I can't attend</option>
-  </select>
+          <select id="attendance">
+            <option value="">Will you attend?</option>
+            <option value="Yes">Yes, I will attend</option>
+            <option value="No">Sorry, I can't attend</option>
+          </select>
 
-  <!-- ✅ NEW FIELD (this is all you’re adding) -->
-  <select id="receiver">
-    <option value="">Who do you want to notify?</option>
-    <option value="groom">Groom 🤵</option>
-    <option value="bride">Bride 👰</option>
-  </select>
+          <!-- ✅ NEW FIELD (this is all you’re adding) -->
+          <select id="receiver">
+            <option value="">Who do you want to notify?</option>
+            <option value="groom">Groom 🤵</option>
+            <option value="bride">Bride 👰</option>
+          </select>
 
-  <textarea id="message"
-    rows="5"
-    placeholder="Leave a message for the couple">
-  </textarea>
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Leave a message for the couple"
+          >
+          </textarea>
 
-  <button type="submit">Send RSVP via WhatsApp</button>
-</form>
+          <button type="submit">Send RSVP via WhatsApp</button>
+        </form>
       </div>
     </section>
 
@@ -184,7 +195,14 @@
       <h3>BETHEL'26</h3>
       <p>Thank you for celebrating with us.</p>
       <br />
-      <p style="font-family: 'Times New Roman', Times, serif; font-style: italic;">Designed with love by Statemantech &copy;2026</p>
+      <p
+        style="
+          font-family: &quot;Times New Roman&quot;, Times, serif;
+          font-style: italic;
+        "
+      >
+        Designed with love by Statemantech &copy;2026
+      </p>
     </footer>
 
     <div class="music-btn" id="musicBtn">♫</div>
