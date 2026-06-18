@@ -4,8 +4,8 @@
 let weddingSupabase = null;
 
 if (typeof window.supabase !== "undefined") {
-  const sbUrl = "https://bvslvksckxmyirklxmre.supabase.co";
-  const sbKey = "sb_publishable_KHM867kk7rujpqEsRkgX1Q_Kg0WJLYh";
+  const sbUrl = "https://vchzhlmkgdlchdgpuqmw.supabase.co";
+  const sbKey = "sb_publishable_i1BmIbtkgL2ZqMHqIsU9GQ_RWU7g7K0";
 
   weddingSupabase = window.supabase.createClient(sbUrl, sbKey);
 }
@@ -154,6 +154,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const text = `💍 Wedding RSVP 💍
+
+      // ===============================
+// SAVE TO SUPABASE (SAFE ADDITION)
+// ===============================
+if (weddingSupabase) {
+  weddingSupabase.from("rsvps").insert([
+    {
+      name: name,
+      email: email,
+      phone: number,
+      attendance: attendance,
+      receiver: receiver,
+      message: message
+    }
+  ]).then(({ error }) => {
+    if (error) {
+      console.log("Supabase error:", error);
+    }
+  });
+}
 
 Name: ${name}
 Email: ${email}
