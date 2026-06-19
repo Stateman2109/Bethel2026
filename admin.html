@@ -186,12 +186,14 @@
         }
 
         // ✅ Fixed Link: Notice the exact placement of the question mark, phone, and equals sign
-        var finalUrl =
-          "https://whatsapp.com" +
-          cleanPhone +
-          "&text=" +
-          encodeURIComponent(msg);
-        window.open(finalUrl);
+        // normalize phone, remove spaces and leading +
+        cleanPhone = cleanPhone.replace(/\s+/g, "");
+        if (cleanPhone.startsWith("+")) cleanPhone = cleanPhone.slice(1);
+
+        var finalUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+          msg,
+        )}`;
+        window.open(finalUrl, "_blank");
       }
 
       function sendWhatsAppAll() {
@@ -210,12 +212,14 @@
               cleanPhone = "234" + cleanPhone.substring(1);
             }
 
-            var finalUrl =
-              "https://whatsapp.com" +
-              cleanPhone +
-              "&text=" +
-              encodeURIComponent(msg);
-            window.open(finalUrl);
+            // normalize phone, remove spaces and leading +
+            cleanPhone = cleanPhone.replace(/\s+/g, "");
+            if (cleanPhone.startsWith("+")) cleanPhone = cleanPhone.slice(1);
+
+            var finalUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+              msg,
+            )}`;
+            window.open(finalUrl, "_blank");
             sentCount++;
           }
         });
