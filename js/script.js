@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.getElementById("message")?.value;
 
       const groomPhone = "2348107232879";
-      const bridePhone = "23497037368995";
+      const bridePhone = "2349069949788";
 
       let phone = "";
 
