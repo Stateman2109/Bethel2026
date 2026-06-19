@@ -112,11 +112,20 @@ async function sendEmailOne(userName, userEmail) {
   }
 
   try {
+    const htmlMessage = `
+      <p>Hi ${userName},</p>
+      <p>${message}</p>
+      <br />
+      <p>Warm regards,<br />The Bethel'26 Wedding Team 💍</p>
+    `;
+
     await emailjs.send("service_pu4qeal", "template_zoc1k1t", {
       to_name: userName,
       to_email: userEmail,
-      message: message,
-      reply_to: "wedding admin",
+      from_name: "Bethel'26 Wedding",
+      message: htmlMessage,
+      subject: "Important Wedding Update - Bethel'26",
+      reply_to: "wedding@bethel26.com",
     });
     console.log(`Email sent to ${userEmail}`);
     alert(`✅ Email sent to ${userName}!`);
@@ -146,11 +155,20 @@ async function sendEmailAll() {
     const user = allData[i];
 
     try {
+      const htmlMessage = `
+        <p>Hi ${user.name},</p>
+        <p>${message}</p>
+        <br />
+        <p>Warm regards,<br />The Bethel'26 Wedding Team 💍</p>
+      `;
+
       await emailjs.send("service_pu4qeal", "template_zoc1k1t", {
         to_name: user.name,
         to_email: user.email,
-        message: message,
-        reply_to: "wedding admin",
+        from_name: "Bethel'26 Wedding",
+        message: htmlMessage,
+        subject: "Important Wedding Update - Bethel'26",
+        reply_to: "wedding@bethel26.com",
       });
       console.log(`[${i + 1}/${allData.length}] Email sent to ${user.email}`);
     } catch (err) {
