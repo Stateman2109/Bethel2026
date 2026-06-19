@@ -8,6 +8,8 @@ if (typeof window.supabase !== "undefined") {
   const sbKey = "sb_publishable_i1BmIbtkgL2ZqMHqIsU9GQ_RWU7g7K0";
 
   weddingSupabase = window.supabase.createClient(sbUrl, sbKey);
+  console.log("Supabase ready:", !!window.supabase, !!weddingSupabase);
+  window.weddingSupabase = weddingSupabase;
 }
 
 // ===============================
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rsvpForm = document.getElementById("rsvpForm");
 
   if (rsvpForm) {
-    rsvpForm.addEventListener("submit", function (e) {
+    rsvpForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const name = document.getElementById("name")?.value;
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.getElementById("message")?.value;
 
       const groomPhone = "2348107232879";
-      const bridePhone = "2349069949788";
+      const bridePhone = "23497037368995";
 
       let phone = "";
 
@@ -155,26 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const text = `💍 Wedding RSVP 💍
 
-      // ===============================
-// SAVE TO SUPABASE (SAFE ADDITION)
-// ===============================
-if (weddingSupabase) {
-  weddingSupabase.from("rsvps").insert([
-    {
-      name: name,
-      email: email,
-      phone: number,
-      attendance: attendance,
-      receiver: receiver,
-      message: message
-    }
-  ]).then(({ error }) => {
-    if (error) {
-      console.log("Supabase error:", error);
-    }
-  });
-}
-
 Name: ${name}
 Email: ${email}
 Number: ${number}
@@ -184,6 +166,48 @@ Message:
 ${message}`;
 
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+      console.log("RSVP WhatsApp text:", text);
+
+      if (weddingSupabase) {
+        console.log("Saving RSVP to Supabase...", {
+          name,
+          email,
+          number,
+          attendance,
+          receiver,
+          message,
+        });
+
+        try {
+          const { data, error } = await weddingSupabase.from("rsvps").insert([
+            {
+              name: name,
+              email: email,
+              phone: number,
+              attendance: attendance,
+              receiver: receiver,
+              message: message,
+            },
+          ]);
+
+          if (error) {
+            console.error("Supabase error:", error);
+            alert(
+              "Could not save RSVP to Supabase. Check console for details.",
+            );
+            return;
+          }
+
+          console.log("Saved RSVP to Supabase successfully:", data);
+        } catch (saveError) {
+          console.error("Supabase insert failed:", saveError);
+          alert("Could not save RSVP to Supabase. Check console for details.");
+          return;
+        }
+      } else {
+        console.warn("Supabase client not initialized.");
+      }
 
       window.open(url, "_blank");
       alert("RSVP ready on WhatsApp. Please click send!");
