@@ -112,12 +112,8 @@ async function sendEmailOne(userName, userEmail) {
   }
 
   try {
-    const htmlMessage = `
-      <p>Hi ${userName},</p>
-      <p>${message}</p>
-      <br />
-      <p>Warm regards,<br />The Bethel'26 Wedding Team 💍</p>
-    `;
+    // Send only the message body; the EmailJS template already adds greeting/signature
+    const htmlMessage = message;
 
     await emailjs.send("service_pu4qeal", "template_zoc1k1t", {
       to_name: userName,
@@ -155,12 +151,8 @@ async function sendEmailAll() {
     const user = allData[i];
 
     try {
-      const htmlMessage = `
-        <p>Hi ${user.name},</p>
-        <p>${message}</p>
-        <br />
-        <p>Warm regards,<br />The Bethel'26 Wedding Team 💍</p>
-      `;
+      // Send only the message body; the EmailJS template already adds greeting/signature
+      const htmlMessage = message;
 
       await emailjs.send("service_pu4qeal", "template_zoc1k1t", {
         to_name: user.name,
