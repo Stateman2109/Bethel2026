@@ -134,84 +134,51 @@ document.addEventListener("DOMContentLoaded", () => {
     rsvpForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const name = document.getElementById("name")?.value;
-      const email = document.getElementById("email")?.value;
-      const number = document.getElementById("number")?.value;
+      const name = document.getElementById("name")?.value.trim();
+      const email = document.getElementById("email")?.value.trim();
+      const number = document.getElementById("number")?.value.trim();
       const attendance = document.getElementById("attendance")?.value;
-      const receiver = document.getElementById("receiver")?.value;
-      const message = document.getElementById("message")?.value;
+      const receiver = document.getElementById("receiver")?.value || null;
+      const message = document.getElementById("message")?.value.trim();
 
-      const groomPhone = "2348107232879";
-      const bridePhone = "2349069949788";
-
-      let phone = "";
-
-      if (receiver === "groom") {
-        phone = groomPhone;
-      } else if (receiver === "bride") {
-        phone = bridePhone;
-      } else {
-        alert("Please choose who to send RSVP to");
+      if (!name || !email || !number || !attendance) {
+        alert(
+          "Please fill in your name, email, phone number, and attendance before submitting.",
+        );
         return;
       }
 
-      const text = `💍 Wedding RSVP 💍
-
-Name: ${name}
-Email: ${email}
-Number: ${number}
-Attendance: ${attendance}
-
-Message:
-${message}`;
-
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-
-      console.log("RSVP WhatsApp text:", text);
-
-      if (weddingSupabase) {
-        console.log("Saving RSVP to Supabase...", {
-          name,
-          email,
-          number,
-          attendance,
-          receiver,
-          message,
-        });
-
-        try {
-          const { data, error } = await weddingSupabase.from("rsvps").insert([
-            {
-              name: name,
-              email: email,
-              phone: number,
-              attendance: attendance,
-              receiver: receiver,
-              message: message,
-            },
-          ]);
-
-          if (error) {
-            console.error("Supabase error:", error);
-            alert(
-              "Could not save RSVP to Supabase. Check console for details.",
-            );
-            return;
-          }
-
-          console.log("Saved RSVP to Supabase successfully:", data);
-        } catch (saveError) {
-          console.error("Supabase insert failed:", saveError);
-          alert("Could not save RSVP to Supabase. Check console for details.");
-          return;
-        }
-      } else {
-        console.warn("Supabase client not initialized.");
+      if (!weddingSupabase) {
+        alert(
+          "Sorry, RSVP submission is not available right now. Please try again later.",
+        );
+        return;
       }
 
-      window.open(url, "_blank");
-      alert("RSVP ready on WhatsApp. Please click send!");
-      this.reset();
+      try {
+        const { data, error } = await weddingSupabase.from("rsvps").insert([
+          {
+            name,
+            email,
+            phone: number,
+            attendance,
+            receiver,
+            message,
+          },
+        ]);
+
+        if (error) {
+          console.error("Supabase error:", error);
+          alert("Could not save RSVP. Please try again or contact the couple.");
+          return;
+        }
+
+        alert("RSVP submitted successfully. Thank you!");
+        this.reset();
+      } catch (saveError) {
+        console.error("Supabase insert failed:", saveError);
+        alert("Could not save RSVP. Please try again or contact the couple.");
+      }
     });
   }
 });
