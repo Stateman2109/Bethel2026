@@ -12,7 +12,135 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script src="js/script.js?v=2" defer></script>
+    <script src="js/script.js?v=3" defer></script>
+    <!-- Primary Meta Tags -->
+    <meta
+      name="description"
+      content="Welcome to Bethel 2026—a sacred celebration of love, faith, and divine covenant. Join Adeolu & Kehinde as they unite in holy matrimony on October 31st, 2026."
+    />
+    <meta
+      name="keywords"
+      content="Bethel 2026, Adeolu and Kehinde, Adeolu Johnson, Omokehinde Esther, wedding website, St. Matthias Anglican Church, House of God, Christian wedding Nigeria"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook / WhatsApp (Controls the beautiful preview card when shared) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bethel2026.vercel.app/" />
+    <meta property="og:title" content="BETHEL'26 Wedding — Adeolu & Kehinde" />
+    <meta
+      property="og:description"
+      content="A sacred celebration of love, faith, and divine covenant. Witness the union of Adeolu Johnson and Omokehinde Esther at St. Matthias Anglican Church."
+    />
+    <meta
+      property="og:image"
+      content="https://bethel2026.vercel.app/images/Adeolu-Kehinde-Wedding-Preview.jpg"
+    />
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bethel2026.vercel.app/" />
+    <meta
+      property="twitter:title"
+      content="BETHEL'26 Wedding — Adeolu & Kehinde"
+    />
+    <meta
+      property="twitter:description"
+      content="A sacred celebration of love, faith, and divine covenant. Establishing a home centered on Christ."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bethel2026.vercel.app/img/Adeolu.jpg"
+    />
+
+    <!-- Favicon (Browser Tab Icon) -->
+    <link rel="icon" type="image/png" href="img/favicon.jpg" />
+
+    <style>
+      /* ===== LIVE STREAM ===== */
+      #live {
+        background: #111;
+        color: #fff;
+      }
+      #live .section-title h2 {
+        color: #fff;
+      }
+      #live .section-title p {
+        color: #ddd;
+      }
+      .live-wrap {
+        max-width: 960px;
+        margin: auto;
+        padding: 0 15px;
+      }
+      .live-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.12);
+        margin-bottom: 18px;
+      }
+      .live-badge .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #888;
+      }
+      .live-badge.is-live {
+        background: #c0392b;
+      }
+      .live-badge.is-live .dot {
+        background: #fff;
+        animation: livePulse 1.2s infinite;
+      }
+      @keyframes livePulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.25;
+        }
+      }
+      .live-player {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .live-player iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .live-message {
+        text-align: center;
+        padding: 50px 20px;
+        border: 1px solid rgba(200, 169, 107, 0.5);
+        border-radius: 12px;
+        line-height: 1.9;
+      }
+      .live-message h3 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.6rem;
+        color: var(--gold, #c8a96b);
+        margin-bottom: 10px;
+      }
+      .live-link {
+        display: inline-block;
+        margin-top: 15px;
+      }
+    </style>
   </head>
   <body>
     <div class="loader" id="loader">
@@ -32,6 +160,7 @@
           <li><a href="reception.html">Reception</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="personnel.html">Personnel</a></li>
+          <li><a href="#live">Live</a></li>
           <li><a href="#rsvp">RSVP</a></li>
         </ul>
       </nav>
@@ -43,7 +172,7 @@
         <source src="img/corp2.mp4" type="video/mp4" />
       </video>
       <div class="wedding-logo">
-        <img src="img/logo.jpg" alt="logo" srcset="" class="w-portrait" />
+        <img src="img/favicon.jpg" alt="logo" srcset="" class="w-portrait" />
       </div>
       <div class="romantic-effects" id="romantic-effects"></div>
       <div class="hero-overlay"></div>
@@ -151,6 +280,22 @@
           <h3 id="seconds">00</h3>
           <span>SECONDS</span>
         </div>
+      </div>
+    </section>
+
+    <section id="live">
+      <div class="section-title">
+        <h2>Watch Live</h2>
+        <p>Join the celebration from anywhere in the world</p>
+      </div>
+
+      <div class="live-wrap" style="text-align: center">
+        <div class="live-badge" id="liveBadge">
+          <span class="dot"></span><span id="liveBadgeText">COMING SOON</span>
+        </div>
+
+        <!-- Filled in by script.js depending on the date/time -->
+        <div id="liveContent"></div>
       </div>
     </section>
 
