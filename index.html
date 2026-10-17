@@ -34,7 +34,7 @@
     />
     <meta
       property="og:image"
-      content="https://bethel2026.vercel.app/images/Adeolu-Kehinde-Wedding-Preview.jpg"
+      content="https://bethel2026.vercel.app/img/couple.jpg"
     />
 
     <!-- Twitter / X -->
@@ -140,6 +140,15 @@
         display: inline-block;
         margin-top: 15px;
       }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        /* THIS SHIFTS THE VIDEO FRAME DOWN TO SHOW THE FACES */
+        object-position: 50% 20%;
+      }
     </style>
   </head>
   <body>
@@ -169,7 +178,7 @@
     <section class="hero" id="home">
       <!-- Replace video.mp4 with the couple prewedding video -->
       <video autoplay muted loop playsinline>
-        <source src="img/corp2.mp4" type="video/mp4" />
+        <source src="img/couple.mp4" type="video/mp4" />
       </video>
       <div class="wedding-logo">
         <img src="img/favicon.jpg" alt="logo" srcset="" class="w-portrait" />
